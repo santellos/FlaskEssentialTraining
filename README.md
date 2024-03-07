@@ -38,7 +38,7 @@ Follow these steps to set up and run the project on your local machine:
    - *PowerShell*:
    ```bash
    $env:FLASK_APP = "app.py"
-   
+   ```
    - *Linux*:
    ```bash
     export FLASK_APP=app.py
@@ -47,11 +47,11 @@ Follow these steps to set up and run the project on your local machine:
    - *Command Prompt*:
    ```bash
     set FLASK_ENV=development
-   
+   ```
    - *PowerShell*:
    ```bash
    $env:FLASK_ENV = "development"
-   
+   ```
    - *Linux*:
    ```bash
     export FLASK_ENV=development
