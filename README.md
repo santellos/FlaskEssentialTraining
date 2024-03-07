@@ -34,7 +34,7 @@ Follow these steps to set up and run the project on your local machine:
    - *Command Prompt*:
    ```bash
     set FLASK_APP=app.py
-   
+   ```
    - *PowerShell*:
    ```bash
    $env:FLASK_APP = "app.py"
