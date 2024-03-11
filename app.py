@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, abort
+from flask import Flask, render_template, request, redirect, url_for, flash, abort, session, jsonify
 import json
 import os.path
 from werkzeug.utils import secure_filename
@@ -32,6 +32,7 @@ def your_url():
 
         with open('urls.json','w') as url_file:
             json.dump(urls, url_file)
+            session[request.form['code']] = True
         return render_template('your_url.html', code=request.form['code'])
     else:
         return redirect(url_for('home'))
