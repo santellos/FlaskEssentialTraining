@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -6,6 +6,6 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/about')
-def about():
-    return 'This is a url shortener'
+@app.route('/your-url')
+def your_url():
+    return render_template('your_url.html', code=request.args['code'])
