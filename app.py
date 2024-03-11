@@ -8,7 +8,7 @@ app.secret_key = 'h432hi5ohi3h5i5hi3o2hi'
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', codes=session.keys())
 
 @app.route('/your-url', methods=['GET','POST'])
 def your_url():
@@ -27,7 +27,7 @@ def your_url():
         else:
             f = request.files['file']
             full_name = request.form['code'] + secure_filename(f.filename)
-            f.save('/Users/sandratello/Desktop/FlaskEssentialTraining/' + full_name)
+            f.save('/Users/sandratello/Desktop/FlaskEssentialTraining/static/user_files/' + full_name)
             urls[request.form['code']] = {'file':full_name}
 
         with open('urls.json','w') as url_file:
