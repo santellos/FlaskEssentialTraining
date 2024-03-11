@@ -28,9 +28,19 @@ def your_url():
             f = request.files['file']
             full_name = request.form['code'] + secure_filename(f.filename)
             f.save('/Users/sandratello/Desktop/url-shortener/' + full_name)
+            urls[request.form['code']] = {'file':full_name}
 
         with open('urls.json','w') as url_file:
             json.dump(urls, url_file)
         return render_template('your_url.html', code=request.form['code'])
     else:
         return redirect(url_for('home'))
+    
+@app.route('/<string:code>')
+def redirect_to_url(code):
+    if os.path.exists('urls.json'):
+        with open('urls.json') as urls_file:
+            urls = json.load(urls_file)
+            if code in urls.keys():
+                if 'url' in urls[code].keys():
+                    return redirect(urls[code]['url']) 
