@@ -46,3 +46,8 @@ def redirect_to_url(code):
                     return redirect(urls[code]['url']) 
                 else:
                     return redirect(url_for('static', filename='user_files/' + urls[code]['file']))
+    return abort(404)
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('page_not_found.html'), 404
