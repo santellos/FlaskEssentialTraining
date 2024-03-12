@@ -65,9 +65,9 @@ Follow these steps to set up and run the project on your local machine:
    pipenv install pytest
 
 10. **Run the Flask Test::**
-   ```bash
-   pytest
-```
+    ```bash
+    pytest
+    ```
 
 **Note:** Make sure to replace "app.py" with the actual name of your Python file if it's different. Adjust any other details based on your project's structure or specific requirements.
 
