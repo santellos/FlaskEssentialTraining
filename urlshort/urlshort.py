@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, abort, session, jsonify, Blueprint
+from flask import render_template, request, redirect, url_for, flash, abort, session, jsonify, Blueprint
 import json
 import os.path
 from werkzeug.utils import secure_filename
@@ -20,14 +20,14 @@ def your_url():
 
         if request.form['code'] in urls.keys():
             flash('That short name has already been taken. Please select another name.')
-            return redirect(url_for('home'))
+            return redirect(url_for('urlshort.home'))
 
         if 'url' in request.form.keys():
             urls[request.form['code']] = {'url':request.form['url']}
         else:
             f = request.files['file']
             full_name = request.form['code'] + secure_filename(f.filename)
-            f.save('/Users/sandratello/Desktop/FlaskEssentialTraining/static/user_files/' + full_name)
+            f.save('/Users/angel/Desktop/Flask/FlaskEssentialTraining/urlshort/static/user_files/' + full_name)
             urls[request.form['code']] = {'file':full_name}
 
         with open('urls.json','w') as url_file:
@@ -35,7 +35,7 @@ def your_url():
             session[request.form['code']] = True
         return render_template('your_url.html', code=request.form['code'])
     else:
-        return redirect(url_for('home'))
+        return redirect(url_for('urlshort.home'))
     
 @bp.route('/<string:code>')
 def redirect_to_url(code):
